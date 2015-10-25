@@ -5,6 +5,20 @@
 	</head>
 	<body>
 		<h2>Opinify</h2>
+		{% if user.is_authenticated %}
+			{% if user.is_active %}
+				<h4>Welcome, {{ user.first_name|capfirst }}</h4>
+				<a href="logout"><h3>Logout</h3></a>
+			{% else %}
+				<h4>Welcome, Guest</h4>
+				<a href="login"><h3>Login</h3></a>
+				<a href="signup"><h3>Sign up</h3></a>
+			{% endif %}
+		{% else %}
+			<h4>Welcome, Guest</h4>
+			<a href="login"><h3>Login</h3></a>
+			<a href="signup"><h3>Sign up</h3></a>
+		{% endif %}
 		{% block content %}
 		<p>Lorem ipsum</p>
 		{% endblock %}

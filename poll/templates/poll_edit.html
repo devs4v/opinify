@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block pagetitle %}{% if edit %}Edit:{{ poll.title }}{% else %}New Poll{% endif %} | Opinify{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+{% csrf_token %}
+	<table>
+		{{ form }}
+	</table>
+	<input type="submit" value="{% if edit %}Save{% else %}Create{% endif %}"/>
+</form>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block pagetitle %}Polls | Opinify{% endblock %}
+
+{% block content %}
+{% if polls %}
+	<table>
+		<thead>
+			<td>Title</td>
+			<td>Created by</td>
+			<td>Timestamp</td>
+		</thead>
+	{% for poll in polls %}
+		<tr>
+			<a href="{% url 'poll:show' poll.id %}"><td>{{ poll.title }}</td></a>
+			<td>{{ poll.creator.first_name }}</td>
+			<td>{{ poll.created }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+
+{% else %}
+	<h3>Oops! There are no polls! Why don't you <a href="{% url 'poll:new' %}">Create one</a>?</h3>
+{% endif %}
+
+{% endblock %}

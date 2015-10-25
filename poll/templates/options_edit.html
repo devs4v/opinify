@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block pagetitle %}Edit Options:{{ poll.title }} | Opinify{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+{% csrf_token %}
+	<h3>{{ poll.title }}</h3>
+	<table>
+		{% for option_form in options_form %}
+			<tr>
+				<td><input type="radio" disabled="disabled"/></td>
+				<td><input type="text" name="label" value="{{ option_form.instance.label }}" /></td>
+				<input type="hidden" name="option_id" value="{{ option_form.id }}">
+			</tr>
+		{% endfor %}
+			<tr class="new_option" style="display:none;">
+				<td><input type="radio" disabled="disabled"/></td>
+				<input type="hidden" name="option_id" value="None">
+				<td><input type="text" name="label" value="" /></td>
+			</tr>
+	</table>
+	<input type="submit" value="Save Options"/>
+</form>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block pagetitle %}Login | Opinify{% endblock %}
+
+{% block content %}
+<ul>
+	{% for message in messages %}
+		<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+	{% endfor %}
+</ul>
+<form action="" method="post">
+{% csrf_token %}
+	<table>
+		{{ form.as_table }}
+	</table>
+	<input type="submit" value="Login"/>
+</form>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block pagetitle %}{{ poll.title }} | Opinify{% endblock %}
+
+{% block content %}
+<h2>{{ poll.title }}</h2>
+	<table>
+{% for option in poll.options_set.all %}
+		<tr>
+			<td><input type="radio" name="vote" id="opt_{{ forloop.counter }}"/></td>
+			<td><label for="opt_{{ forloop.counter }}">{{ option.label }}</label></td>
+		</tr>
+{% empty %}
+	<h3>No options available for this poll!</h3>
+{% endfor %}
+	</table>
+{% endblock %}

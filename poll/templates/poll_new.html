@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block pagetitle %}New Poll | Opinify{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+{% csrf_token %}
+	<table>
+		{{ form }}
+	</table>
+	<input type="submit" value="Create"/>
+</form>
+
+{% endblock %}

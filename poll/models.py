@@ -13,6 +13,12 @@ class Poll(TimeStampedModel):
 	expires = models.DateTimeField()
 
 	islive = StatusField(choices_name='LIVE_STATUS')
+
+	def save_to_firebase(self):
+		pass
+
+	def _serialize_to_json(self):
+		pass
 		
 		
 class Options(models.Model):
@@ -21,8 +27,20 @@ class Options(models.Model):
 	poll = models.ForeignKey(Poll)
 	label = models.CharField(max_length=500)
 
+	def save_to_firebase(self):
+		pass
+		
+	def _serialize_to_json(self):
+		pass
+
 class Vote(TimeStampedModel):
 	""" Each of the votes """
 
 	voter = models.ForeignKey(settings.AUTH_USER_MODEL)
 	vote = models.ForeignKey(Options)
+
+	def save_to_firebase(self):
+		pass
+
+	def _serialize_to_json(self):
+		pass
